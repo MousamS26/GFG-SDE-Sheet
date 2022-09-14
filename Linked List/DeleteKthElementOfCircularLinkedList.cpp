@@ -25,6 +25,20 @@ Node* delHead(Node* head)
 	delete temp;
 	return head;
 }
+Node* deleteKthNode(Node *head, int k)
+{
+	if (head == NULL)
+		return head;
+	if (k == 1)
+		return delHead(head);
+	Node* curr = head;
+	for (int i = 0; i < k - 2; i++)
+		curr = curr->next;
+	Node* temp = curr->next;
+	curr->next = curr->next->next;
+	delete temp;
+	return head;
+}
 int main()
 {
 	Node* head = new Node(10);
@@ -33,4 +47,9 @@ int main()
 	head->next->next->next = new Node(40);
 	head->next->next->next->next = head;
 
+	head = deleteKthNode(head, 2);
+	for (Node* temp = head; temp->next != head; temp = temp->next)
+	{
+		cout << (temp->data) << " ";
+	}
 }
