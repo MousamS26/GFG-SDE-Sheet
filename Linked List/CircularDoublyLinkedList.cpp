@@ -27,4 +27,5 @@ int main()
 	two->next = three;
 	three->prev = two;
 	three->next = head;
+	head->prev = three;
 }
