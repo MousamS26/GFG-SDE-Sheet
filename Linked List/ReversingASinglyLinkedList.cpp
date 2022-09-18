@@ -33,6 +33,7 @@ int main()
 	for (Node* temp = head; temp != NULL; temp = temp->next)
 		cout << temp->data << " ";
 	head = reverse(head);
+	cout << "\n";
 	for (Node* temp = head; temp != NULL; temp = temp->next)
 		cout << temp->data << " ";
 }
