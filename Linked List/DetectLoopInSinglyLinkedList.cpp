@@ -13,20 +13,33 @@ struct Node
 };
 bool isLoop(Node *head)
 {
-	unordered_set<Node*> s;
-	for (Node* curr = head; curr != NULL; curr = curr->next)
+	// unordered_set<Node*> s;
+	// for (Node* curr = head; curr != NULL; curr = curr->next)
+	// {
+	// 	if (s.find(curr) != s.end())
+	// 		return true;
+	// 	s.insert(curr);
+	// }
+	// return false;
+	Node* slow = head; Node* fast = head;
+	while (fast != NULL && fast->next != NULL)
 	{
-		if (s.find(curr) != s.end())
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
 			return true;
-		s.insert(curr);
 	}
 	return false;
 }
 int main()
 {
-	Node *head = new Node(10);
-	head->next = new Node(20);
-	head->next->next = new Node(30);
-	head->next->next->next = new Node(40);
+	Node* head = new Node(10);
+	Node* one = new Node(20);
+	Node* two = new Node(30);
+	Node* three = new Node(40);
+	head->next = one;
+	head->next->next = two;
+	head->next->next->next = three;
+	three->next = one;
 	cout << isLoop(head);
 }
