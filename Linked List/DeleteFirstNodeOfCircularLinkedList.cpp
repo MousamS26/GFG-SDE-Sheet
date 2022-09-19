@@ -25,6 +25,14 @@ Node* delHead(Node* head)
 	delete temp;
 	return head;
 }
+void traverse(Node* head)
+{
+	if (head == NULL)
+		return;
+	cout << (head->data) << " ";
+	for (Node* temp = head->next; temp != head; temp = temp->next)
+		cout << (temp->data) << " ";
+}
 int main()
 {
 	Node* head = new Node(10);
@@ -32,5 +40,7 @@ int main()
 	head->next->next = new Node(30);
 	head->next->next->next = new Node(40);
 	head->next->next->next->next = head;
+	head = delHead(head);
 
+	traverse(head);
 }
